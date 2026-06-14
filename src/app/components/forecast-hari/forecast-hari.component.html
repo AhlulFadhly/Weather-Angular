@@ -4,167 +4,52 @@
         <h3>Prakiraan Cuaca 3 Hari</h3>
     </div>
 
-    <div class="forecast-grid">
+    <div class="forecast-grid" *ngFor="let day of forecastDays">
 
-        <!-- Hari 1 -->
-        <div class="forecast-card active">
+        <div class=" forecast-card">
 
             <div class="forecast-date">
-                Jumat, 12 Juni 2026
+                {{day.date | date:'EEEE, d MMMM y'}}
             </div>
 
             <div class="forecast-main">
 
-                <img
-                    src="assets/cuaca/cerah-am.png"
-                    alt="Cerah"
-                    class="weather-icon">
+                <img [src]="day.icon" alt="Cerah" class="weather-icon">
 
                 <div class="weather-condition">
-                    Cerah
+                    {{ day.weather }}
                 </div>
 
                 <div class="temperature">
                     <div>
                         <span class="label">Min</span>
-                        <span class="value">26°C</span>
+                        <span class="value">{{ day.tempMin }}°C</span>
                     </div>
-
                     <div>
                         <span class="label">Maks</span>
-                        <span class="value">30°C</span>
+                        <span class="value">{{ day.tempMax }}°C</span>
                     </div>
                 </div>
-
             </div>
 
             <div class="forecast-details">
 
                 <div class="detail-item">
                     <i class="fa-solid fa-droplet"></i>
-                    <span>0 – 0.4 mm</span>
+                    <span>{{ day.rainMin }} – {{ day.rainMax }} mm</span>
                 </div>
 
                 <div class="detail-item">
                     <i class="fa-solid fa-wind"></i>
-                    <span>2 – 11.9 km/jam</span>
+                    <span>{{ day.windMin }} – {{ day.windMax }} km/jam</span>
                 </div>
 
                 <div class="detail-item">
                     <i class="fa-solid fa-droplet"></i>
-                    <span>62 – 82%</span>
+                    <span>{{ day.humidityMin }} – {{ day.humidityMax }}%</span>
                 </div>
-
             </div>
-
         </div>
-
-        <!-- Hari 2 -->
-        <div class="forecast-card">
-
-            <div class="forecast-date">
-                Sabtu, 13 Juni 2026
-            </div>
-
-            <div class="forecast-main">
-
-                <img
-                    src="assets/cuaca/berawan-am.png"
-                    alt="Berawan"
-                    class="weather-icon">
-
-                <div class="weather-condition">
-                    Berawan
-                </div>
-
-                <div class="temperature">
-                    <div>
-                        <span class="label">Min</span>
-                        <span class="value">25°C</span>
-                    </div>
-
-                    <div>
-                        <span class="label">Maks</span>
-                        <span class="value">31°C</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="forecast-details">
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-droplet"></i>
-                    <span>0 mm</span>
-                </div>
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-wind"></i>
-                    <span>3 – 12 km/jam</span>
-                </div>
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-droplet"></i>
-                    <span>65 – 85%</span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Hari 3 -->
-        <div class="forecast-card">
-
-            <div class="forecast-date">
-                Minggu, 14 Juni 2026
-            </div>
-
-            <div class="forecast-main">
-
-                <img
-                    src="assets/cuaca/hujan-am.png"
-                    alt="Hujan Ringan"
-                    class="weather-icon">
-
-                <div class="weather-condition">
-                    Hujan Ringan
-                </div>
-
-                <div class="temperature">
-                    <div>
-                        <span class="label">Min</span>
-                        <span class="value">25°C</span>
-                    </div>
-
-                    <div>
-                        <span class="label">Maks</span>
-                        <span class="value">29°C</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="forecast-details">
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-droplet"></i>
-                    <span>0.1 – 4 mm</span>
-                </div>
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-wind"></i>
-                    <span>4 – 14 km/jam</span>
-                </div>
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-droplet"></i>
-                    <span>70 – 90%</span>
-                </div>
-
-            </div>
-
-        </div>
-
+        
     </div>
-
 </div>

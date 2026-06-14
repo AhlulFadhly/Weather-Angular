@@ -1,0 +1,116 @@
+<div
+  class="weather-bg"
+  [ngClass]="backgroundClass">
+
+  <!-- CLEAR -->
+  @if(weatherType === 'clear') {
+
+    <div class="sun-glow"></div>
+
+    <div class="haze haze-1"></div>
+
+    <div class="haze haze-2"></div>
+
+  }
+
+  @if(weatherType === 'partly-cloudy') {
+
+  <div class="sun-glow"></div>
+
+  <div class="haze haze-1"></div>
+
+  <div class="haze haze-2"></div>
+
+  <div class="cloud cloud-1"></div>
+
+  <div class="cloud cloud-2"></div>
+
+}
+
+  <!-- CLOUDY -->
+  @if(weatherType === 'cloudy') {
+
+    <div class="cloud cloud-1"></div>
+
+    <div class="cloud cloud-2"></div>
+
+    <div class="cloud cloud-3"></div>
+
+  }
+
+  <!-- RAIN -->
+  @if(weatherType === 'rain') {
+
+    <div class="rain">
+
+      @for(drop of drops; track $index) {
+
+        <span
+          [style.left.%]="drop.left"
+          [style.animation-delay.s]="drop.delay">
+        </span>
+
+      }
+
+    </div>
+
+    <div class="cloud cloud-1"></div>
+
+    <div class="cloud cloud-2"></div>
+
+    <div class="cloud cloud-3"></div>
+
+  }
+
+  <!-- THUNDER -->
+  @if(weatherType === 'thunder') {
+
+    <div class="rain">
+
+      @for(drop of drops; track $index) {
+
+        <span
+          [style.left.%]="drop.left"
+          [style.animation-delay.s]="drop.delay">
+        </span>
+
+      }
+
+    </div>
+
+    <div
+      class="flash"
+      [class.active]="isFlashing">
+    </div>
+
+    @if(showBolt) {
+
+      <div
+        class="lightning"
+        [style.left.%]="lightningLeft">
+      </div>
+
+    }
+
+    <div class="cloud cloud-1"></div>
+
+    <div class="cloud cloud-2"></div>
+
+    <div class="cloud cloud-3"></div>
+
+  }
+
+  <!-- FOG -->
+  @if(weatherType === 'fog') {
+
+    <div class="fog fog-1"></div>
+
+    <div class="fog fog-2"></div>
+
+    <div class="fog fog-3"></div>
+
+    <div class="fog-overlay"></div>
+
+  }
+
+</div>

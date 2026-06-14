@@ -1,20 +1,36 @@
 <div class="search-wrapper">
+
     <div class="search-box">
+
         <i class="fa-solid fa-magnifying-glass"></i>
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Cari kota atau kabupaten..."
-            autocomplete="off"
-        >
+        <input type="text" [(ngModel)]="searchText" (input)="search()" placeholder="Cari kota atau kabupaten..."
+            autocomplete="off">
 
-        <button class="clear-btn" id="clearBtn">
+        <button *ngIf="searchText" type="button" class="clear-btn" (click)="clearSearch()">
+
             <i class="fa-solid fa-xmark"></i>
+
         </button>
+
     </div>
 
-    <div class="suggestions" id="suggestions">
-        <!-- Akan diisi JavaScript -->
+    <div class="suggestions" *ngIf="suggestions.length > 0">
+
+        <div class="suggestion-item" *ngFor="let item of suggestions" (click)="selectWilayah(item)">
+
+            <strong>{{ item.name }}</strong>
+
+            <br>
+
+            <small>
+                {{ item.district }},
+                {{ item.regency }},
+                {{ item.province }}
+            </small>
+
+        </div>
+
     </div>
+
 </div>

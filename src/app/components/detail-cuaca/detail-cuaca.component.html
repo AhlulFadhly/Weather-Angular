@@ -1,6 +1,6 @@
 <div class="weather-container">
 
-    <div class="weather-card">
+    <div class="weather-card" >
 
         <div class="weather-content">
 
@@ -9,15 +9,15 @@
                     <i class="fa-solid fa-location-dot"></i>
 
                     <div>
-                        <h2>Jakarta Pusat</h2>
-                        <p>Gambir, DKI Jakarta</p>
+                        <h2>{{weatherData.lokasi.kotkab}}</h2>
+                        <p>{{weatherData.lokasi.desa}}, {{weatherData.lokasi.provinsi}}</p>
                     </div>
                 </div>
 
-                <h3>Cerah</h3>
+                <h3>{{selectedWeather.weather_desc}}</h3>
 
                 <div class="temperature">
-                    30<span>°C</span>
+                    {{selectedWeather.t}}<span>°C</span>
                 </div>
 
                 <p class="feels-like">
@@ -26,7 +26,7 @@
 
                 <div class="date-time">
                     <i class="fa-regular fa-calendar"></i>
-                    Jumat, 12 Juni 2026 · 16:00 WIB
+                    {{ selectedWeather.local_datetime | date:'EEEE, d MMMM yyyy' }} · {{ selectedWeather.local_datetime | date:'HH:mm' }} WIB
                 </div>
             </div>
 
@@ -49,7 +49,7 @@
 
                 <div>
                     <span>Kelembapan</span>
-                    <strong>62%</strong>
+                    <strong>{{selectedWeather.hu}}</strong>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
 
                 <div>
                     <span>Angin</span>
-                    <strong>11.9 km/jam</strong>
+                    <strong>{{selectedWeather.ws}} km/jam</strong>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
 
                 <div>
                     <span>Curah Hujan</span>
-                    <strong>0.4 mm</strong>
+                    <strong>{{selectedWeather.tp}} mm</strong>
                 </div>
             </div>
 
@@ -76,7 +76,7 @@
 
                 <div>
                     <span>Arah Angin</span>
-                    <strong>Utara (N)</strong>
+                    <strong>{{selectedWeather.wd}} ({{selectedWeather.wd_deg}}°) -> {{selectedWeather.wd_to}}</strong>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
 
                 <div>
                     <span>Tutupan Awan</span>
-                    <strong>29%</strong>
+                    <strong>{{selectedWeather.tcc}} %</strong>
                 </div>
             </div>
 
@@ -94,7 +94,7 @@
 
                 <div>
                     <span>Visibilitas</span>
-                    <strong>&lt; 8 km</strong>
+                    <strong>{{selectedWeather.vs_text}}</strong>
                 </div>
             </div>
 
@@ -107,3 +107,4 @@
     </div>
 
 </div>
+

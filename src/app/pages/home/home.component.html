@@ -1,7 +1,21 @@
+<app-weather-background [selectedWeather]="selectedWeather"></app-weather-background>
+
 <app-search></app-search>
 
-<app-detail-cuaca></app-detail-cuaca>
+<app-detail-cuaca
+    [selectedWeather]="selectedWeather"
+    [weatherData]="weatherData"
+    ></app-detail-cuaca>
 
-<app-forecast-jam></app-forecast-jam>
+<app-forecast-jam
+    [allWeather]="allWeather"
 
-<app-forecast-hari></app-forecast-hari>
+    [selectedWeather]="selectedWeather"
+
+    (weatherSelected)="
+        selectWeather($event)
+    "
+
+></app-forecast-jam>
+
+<app-forecast-hari [weatherData]="weatherData"></app-forecast-hari>

@@ -1,0 +1,415 @@
+.weather-bg {
+  position: fixed;
+  inset: 0;
+
+  overflow: hidden;
+  transition: background 1.5s ease;
+  z-index: -1;
+}
+
+.clear-day {
+  background:
+    linear-gradient(180deg,
+      #6f8fb7 0%,
+      #6f95c7 50%,
+      #7aa0d1 100%);
+}
+
+.clear-night {
+  background:
+    linear-gradient(180deg,
+      #1f2937 0%,
+      #161f2d 50%,
+      #0f1724 100%);
+}
+
+.partly-cloudy-day {
+  background:
+    linear-gradient(180deg,
+      #6f8fb7 0%,
+      #6f95c7 50%,
+      #7aa0d1 100%);
+}
+
+.partly-cloudy-night {
+  background:
+    linear-gradient(180deg,
+      #1a1f28 0%,
+      #121821 50%,
+      #0b1118 100%);
+}
+
+.cloudy-day {
+  background:
+    linear-gradient(180deg,
+      #a2adb8 0%,
+      #939fab 50%,
+      #8692a0 100%);
+}
+
+.cloudy-night {
+  background:
+    linear-gradient(180deg,
+      #3b4654 0%,
+      #313c4a 50%,
+      #27303d 100%);
+}
+
+.rain-day {
+  background:
+    linear-gradient(180deg,
+      #73879f 0%,
+      #62758b 50%,
+      #536477 100%);
+}
+
+.rain-night {
+  background:
+    linear-gradient(180deg,
+      #2f3c50 0%,
+      #152238 50%,
+      #0c1930 100%);
+}
+
+.thunder-day {
+  background:
+    linear-gradient(180deg,
+      #586779 0%,
+      #485565 50%,
+      #394553 100%);
+}
+
+.thunder-night {
+  background:
+    linear-gradient(180deg,
+      #1d2430 0%,
+      #121923 50%,
+      #0a1018 100%);
+}
+
+.fog-day {
+  background:
+    linear-gradient(180deg,
+      #9ca7b4 0%,
+      #8f9aa8 50%,
+      #7e8998 100%);
+}
+
+.fog-night {
+  background:
+    linear-gradient(180deg,
+      #59616c 0%,
+      #4d5560 50%,
+      #414954 100%);
+}
+
+.cloud {
+  position: absolute;
+
+  width: 500px;
+  height: 140px;
+
+  border-radius: 120px;
+
+  background: rgba(255, 255, 255, .08);
+
+  filter: blur(30px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: inherit;
+}
+
+.cloud::before {
+  width: 180px;
+  height: 180px;
+
+  left: 60px;
+  top: -70px;
+}
+
+.cloud::after {
+  width: 220px;
+  height: 220px;
+
+  right: 60px;
+  top: -100px;
+}
+
+.cloud-1 {
+  top: 80px;
+  left: 8%;
+  animation: drift1 18s ease-in-out infinite;
+}
+
+.cloud-2 {
+  top: 220px;
+  left: 55%;
+  animation: drift2 22s ease-in-out infinite;
+}
+
+.cloud-3 {
+  top: 400px;
+  left: 25%;
+  animation: drift3 26s ease-in-out infinite;
+}
+
+.partly-cloudy-day .cloud,
+.partly-cloudy-night .cloud {
+  background: rgba(255, 255, 255, .12);
+}
+
+@keyframes moveCloud {
+
+  from {
+    transform: translateX(-500px);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 500px));
+  }
+
+}
+
+.rain {
+  position: absolute;
+  inset: 0;
+}
+
+.rain span {
+  position: absolute;
+
+  width: 1px;
+  height: 25px;
+
+  background: rgba(255, 255, 255, .3);
+
+  animation: rain 1s linear infinite;
+}
+
+@keyframes rain {
+
+  from {
+    transform:
+      translateY(-100px) translateX(0);
+  }
+
+  to {
+    transform:
+      translateY(110vh) translateX(-40px);
+  }
+
+}
+
+/* Flash seluruh layar */
+
+.flash {
+  position: absolute;
+  inset: 0;
+
+  background: white;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.flash.active {
+  animation: flash 250ms ease-out;
+}
+
+@keyframes flash {
+
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: .7;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+/* Bentuk petir */
+
+.lightning {
+
+  position: absolute;
+
+  top: 50px;
+
+  width: 12px;
+  height: 250px;
+
+  background: white;
+
+  clip-path: polygon(50% 0%,
+      100% 35%,
+      65% 35%,
+      100% 100%,
+      20% 60%,
+      50% 60%);
+
+  filter:
+    drop-shadow(0 0 10px white) drop-shadow(0 0 30px white) drop-shadow(0 0 60px white);
+
+  animation: bolt 250ms ease-out;
+}
+
+@keyframes bolt {
+
+  from {
+    opacity: 0;
+    transform: scaleY(.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+}
+
+
+.sun-glow {
+  position: absolute;
+
+  top: -120px;
+  left: -120px;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle,
+      rgba(255, 255, 255, .95) 0%,
+      rgba(255, 255, 255, .3) 35%,
+      transparent 70%);
+
+  filter: blur(40px);
+}
+
+.haze {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, .08);
+
+  filter: blur(80px);
+}
+
+.haze-1 {
+  width: 500px;
+  height: 500px;
+
+  left: 20%;
+  top: 15%;
+
+  animation: float 18s ease-in-out infinite;
+}
+
+.haze-2 {
+  width: 700px;
+  height: 700px;
+
+  right: -200px;
+  bottom: -200px;
+
+  animation: float 24s ease-in-out infinite;
+}
+
+.fog {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, .18);
+
+  filter: blur(80px);
+}
+
+.fog-1 {
+  width: 800px;
+  height: 300px;
+
+  left: -200px;
+  top: 80px;
+
+  animation: driftLeft 25s ease-in-out infinite;
+}
+
+.fog-2 {
+  width: 900px;
+  height: 350px;
+
+  right: -250px;
+  top: 250px;
+
+  animation: driftRight 35s ease-in-out infinite;
+}
+
+.fog-3 {
+  width: 1200px;
+  height: 400px;
+
+  left: -100px;
+  bottom: -100px;
+
+  animation: driftLeft 45s ease-in-out infinite;
+}
+
+.fog-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(255, 255, 255, .06);
+
+  backdrop-filter: blur(2px);
+}
+
+@keyframes driftLeft {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(40px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+@keyframes driftRight {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-40px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
