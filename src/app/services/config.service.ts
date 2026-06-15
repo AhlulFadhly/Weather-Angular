@@ -19,13 +19,9 @@ export class ConfigService {
     return this.adm4Subject.value;
   }
 
-  // getWeather(adm4: string): Observable<any> {
-  //   const apiUrl = `https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=${adm4}`;
+  getWeather(adm4: string): Observable<any> {
+    const apiUrl = `https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=${adm4}`;
 
-  //   return this.http.get(apiUrl);
-  // }
-
-  getWeather(adm4: string) {
-    return this.http.get<any>('assets/data/mock.json');
+    return this.http.get(apiUrl);
   }
 }

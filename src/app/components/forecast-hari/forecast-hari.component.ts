@@ -18,55 +18,82 @@ export class ForecastHariComponent implements OnChanges {
       this.generateForecast();
     }
   }
+  
+  getWeatherIcon(apiImage: string): string {
+    if (!apiImage) {
+      return 'assets/cuaca/default.png';
+    }
+
+    const fileName = apiImage
+      .split('/')
+      .pop()
+      ?.replace('.svg', '.png')
+      .replaceAll(' ', '-')
+      .toLowerCase();
+
+    return `assets/cuaca/${fileName}`;
+  }
 
   generateForecast() {
-    const days = this.weatherData.data[0].cuaca;
+  const days = this.weatherData.data[0].cuaca;
 
-    this.forecastDays = days.map((day: any[]) => {
-      const temps = day.map((x) => x.t);
+  this.forecastDays = days.map((day: any[], index: number) => {
 
-      const rain = day.map((x) => x.tp);
+    const avgTemp = Math.round(
+      day.reduce((sum, item) => sum + item.t, 0) /
+      day.length
+    );
 
-      const wind = day.map((x) => x.ws);
+    const weatherCount = day.reduce(
+      (acc: any, item) => {
+        acc[item.weather_desc_en] =
+          (acc[item.weather_desc_en] || 0) + 1;
 
-      const humidity = day.map((x) => x.hu);
+        return acc;
+      },
+      {}
+    );
 
-      // hitung cuaca dominan
-      const count: any = {};
-
-      day.forEach((item) => {
-        count[item.weather_desc] = (count[item.weather_desc] || 0) + 1;
-      });
-
-      const dominant = Object.keys(count).reduce((a, b) =>
-        count[a] > count[b] ? a : b,
+    const dominantWeather =
+      Object.keys(weatherCount).reduce(
+        (a, b) =>
+          weatherCount[a] > weatherCount[b]
+            ? a
+            : b
       );
 
-      const icon = day.find((x) => x.weather_desc === dominant)?.image;
+    const icon =
+      day.find(
+        x => x.weather_desc_en === dominantWeather
+      )?.image;
 
-      return {
-        date: day[0].local_datetime,
+    // nama hari
+    let displayDate = '';
 
-        weather: dominant,
+    if (index === 0) {
+      displayDate = 'Today';
+    } else if (index === 1) {
+      displayDate = 'Tomorrow';
+    } else {
+      displayDate = new Date(
+        day[0].local_datetime
+      ).toLocaleDateString(
+        'en-US',
+        {
+          weekday: 'long'
+        }
+      );
+    }
 
-        icon,
+    return {
+      date: displayDate,
 
-        tempMin: Math.min(...temps),
+      weather: dominantWeather,
 
-        tempMax: Math.max(...temps),
+      icon,
 
-        rainMin: Math.min(...rain),
-
-        rainMax: Math.max(...rain),
-
-        windMin: Math.floor(Math.min(...wind)),
-
-        windMax: Math.ceil(Math.max(...wind)),
-
-        humidityMin: Math.min(...humidity),
-
-        humidityMax: Math.max(...humidity),
-      };
-    });
-  }
+      temp: avgTemp,
+    };
+  });
+}
 }

@@ -1,0 +1,359 @@
+.about-bg {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #071124 0%,
+            #10203d 50%,
+            #16284b 100%
+        );
+
+    transition:
+        background 1.5s ease;
+}
+
+
+.about-container {
+
+    min-height: 100vh;
+
+    padding:
+        120px
+        clamp(30px, 10vw, 150px);
+
+    color: white;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+/* =====================
+   HERO
+===================== */
+
+.hero {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 60px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 100px;
+}
+
+.hero-text {
+
+    flex: 1;
+
+    min-width: 320px;
+}
+
+.tag {
+
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+
+    color: white;
+
+    font-size:
+        clamp(
+            48px,
+            8vw,
+            90px
+        );
+
+    font-weight: 200;
+
+    margin:
+        24px 0;
+}
+
+.hero p {
+
+    max-width: 700px;
+
+    font-size:
+        clamp(
+            16px,
+            2vw,
+            22px
+        );
+
+    line-height: 1.8;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .75
+        );
+}
+
+.hero-image {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.hero-image img {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    object-fit: contain;
+}
+
+
+
+/* =====================
+   SECTION TITLE
+===================== */
+
+.features h2,
+.tech h2 {
+
+    text-align: center;
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            54px
+        );
+
+    font-weight: 200;
+
+    margin-bottom: 50px;
+
+    color: white;
+}
+
+
+
+/* =====================
+   FEATURE
+===================== */
+
+.features {
+
+    margin-bottom: 100px;
+}
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                260px,
+                1fr
+            )
+        );
+
+    gap: 24px;
+}
+
+.feature-card {
+    padding: 36px;
+    border-radius: 32px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: .3s;
+}
+
+.feature-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+}
+
+.icon {
+
+    font-size: 60px;
+
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+
+    color: white;
+
+    margin-bottom: 14px;
+
+    font-size: 24px;
+}
+
+.feature-card p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .7
+        );
+
+    line-height: 1.8;
+}
+
+
+
+/* =====================
+   TECH
+===================== */
+
+.tech {
+
+    margin-bottom: 100px;
+}
+
+.tech-list {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 16px;
+}
+
+.tech-list span {
+
+    padding:
+        16px
+        28px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+
+    color: white;
+}
+
+
+
+/* =====================
+   FOOTER
+===================== */
+
+.footer {
+
+    padding:
+        80px
+        0;
+
+    text-align: center;
+}
+
+.footer h3 {
+
+    color: white;
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            60px
+        );
+
+    font-weight: 200;
+
+    margin-bottom: 18px;
+}
+
+.footer p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .7
+        );
+
+    font-size: 18px;
+}
+
+
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width:768px) {
+
+    .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .hero-text {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .feature-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}

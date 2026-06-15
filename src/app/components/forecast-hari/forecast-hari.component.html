@@ -1,55 +1,25 @@
-<div class="forecast-3days">
-
-    <div class="section-header">
-        <h3>Prakiraan Cuaca 3 Hari</h3>
+<div class="forecast-grid">
+  <div class="forecast-card" *ngFor="let day of forecastDays">
+    <div class="forecast-date">
+      {{ day.date | uppercase }}
     </div>
 
-    <div class="forecast-grid" *ngFor="let day of forecastDays">
+    <div class="forecast-main">
+      <img
+        [src]="getWeatherIcon(day.icon)"
+        [alt]="day.weather"
+        class="weather-icon"
+      />
 
-        <div class=" forecast-card">
+      <div class="temperature">
+        <div class="temp-value">
+          <span class="value"> {{ day.temp }}°C </span>
 
-            <div class="forecast-date">
-                {{day.date | date:'EEEE, d MMMM y'}}
-            </div>
-
-            <div class="forecast-main">
-
-                <img [src]="day.icon" alt="Cerah" class="weather-icon">
-
-                <div class="weather-condition">
-                    {{ day.weather }}
-                </div>
-
-                <div class="temperature">
-                    <div>
-                        <span class="label">Min</span>
-                        <span class="value">{{ day.tempMin }}°C</span>
-                    </div>
-                    <div>
-                        <span class="label">Maks</span>
-                        <span class="value">{{ day.tempMax }}°C</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="forecast-details">
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-droplet"></i>
-                    <span>{{ day.rainMin }} – {{ day.rainMax }} mm</span>
-                </div>
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-wind"></i>
-                    <span>{{ day.windMin }} – {{ day.windMax }} km/jam</span>
-                </div>
-
-                <div class="detail-item">
-                    <i class="fa-solid fa-droplet"></i>
-                    <span>{{ day.humidityMin }} – {{ day.humidityMax }}%</span>
-                </div>
-            </div>
+          <span class="weather-desc">
+            {{ day.weather }}
+          </span>
         </div>
-        
+      </div>
     </div>
+  </div>
 </div>

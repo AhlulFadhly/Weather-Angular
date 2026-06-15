@@ -1,110 +1,65 @@
-<div class="weather-container">
+<div class="location">
+    <i class="fa-solid fa-location-dot"></i>
 
-    <div class="weather-card" >
-
-        <div class="weather-content">
-
-            <div class="weather-info">
-                <div class="location">
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    <div>
-                        <h2>{{weatherData.lokasi.kotkab}}</h2>
-                        <p>{{weatherData.lokasi.desa}}, {{weatherData.lokasi.provinsi}}</p>
-                    </div>
-                </div>
-
-                <h3>{{selectedWeather.weather_desc}}</h3>
-
-                <div class="temperature">
-                    {{selectedWeather.t}}<span>°C</span>
-                </div>
-
-                <p class="feels-like">
-                    Terasa seperti 31°C
-                </p>
-
-                <div class="date-time">
-                    <i class="fa-regular fa-calendar"></i>
-                    {{ selectedWeather.local_datetime | date:'EEEE, d MMMM yyyy' }} · {{ selectedWeather.local_datetime | date:'HH:mm' }} WIB
-                </div>
-            </div>
-
-            <div class="weather-image">
-                <img src="assets/weather/cerah-berawan.png" alt="Cuaca Cerah">
-            </div>
-
-        </div>
-
+    <div>
+        <h2>{{weatherData.lokasi.kotkab}}</h2>
+        <p>{{weatherData.lokasi.desa}}, {{weatherData.lokasi.provinsi}}</p>
     </div>
-
-    <div class="detail-card">
-
-        <h3>Detail Cuaca</h3>
-
-        <div class="detail-grid">
-
-            <div class="detail-item">
-                <i class="fa-solid fa-droplet"></i>
-
-                <div>
-                    <span>Kelembapan</span>
-                    <strong>{{selectedWeather.hu}}</strong>
-                </div>
-            </div>
-
-            <div class="detail-item">
-                <i class="fa-solid fa-wind"></i>
-
-                <div>
-                    <span>Angin</span>
-                    <strong>{{selectedWeather.ws}} km/jam</strong>
-                </div>
-            </div>
-
-            <div class="detail-item">
-                <i class="fa-solid fa-cloud-rain"></i>
-
-                <div>
-                    <span>Curah Hujan</span>
-                    <strong>{{selectedWeather.tp}} mm</strong>
-                </div>
-            </div>
-
-            <div class="detail-item">
-                <i class="fa-regular fa-compass"></i>
-
-                <div>
-                    <span>Arah Angin</span>
-                    <strong>{{selectedWeather.wd}} ({{selectedWeather.wd_deg}}°) -> {{selectedWeather.wd_to}}</strong>
-                </div>
-            </div>
-
-            <div class="detail-item">
-                <i class="fa-solid fa-cloud"></i>
-
-                <div>
-                    <span>Tutupan Awan</span>
-                    <strong>{{selectedWeather.tcc}} %</strong>
-                </div>
-            </div>
-
-            <div class="detail-item">
-                <i class="fa-regular fa-eye"></i>
-
-                <div>
-                    <span>Visibilitas</span>
-                    <strong>{{selectedWeather.vs_text}}</strong>
-                </div>
-            </div>
-
-        </div>
-
-        <p class="note">
-            * Data prakiraan, bukan data observasi
-        </p>
-
-    </div>
-
 </div>
+<div class="card">
+    <div class="cuaca">
+        <div class="date">
+            <div class="hari">
+                {{selectedWeather.local_datetime | date:'EEEE' | uppercase }}
+            </div>
+            <span>{{selectedWeather.local_datetime | date:'MMMM d' | uppercase }}</span>
+        </div>
+        <div class="kondisi">
+            <div class="suhu">
+                <div class="c">
+                    {{selectedWeather.t }}°C
+                </div>
+                <div class="awan">
+                    {{selectedWeather.weather_desc_en | uppercase }}
+                </div>
+            </div>
+            <div class="gambar">
+                <img [src]="getWeatherIcon(selectedWeather.image)" [alt]="selectedWeather.weather_desc">
+            </div>
+        </div>
 
+    </div>
+    <div class="detail">
+        <div class="stats">
+            <div class="label">Humidity</div>
+            <div class="value">{{selectedWeather.hu }}</div>
+
+            <div class="label">Wind</div>
+            <div class="value">{{selectedWeather.ws }} km/h</div>
+
+            <div class="label">Precipitation</div>
+            <div class="value">{{selectedWeather.tp }}</div>
+
+            <div class="label">Wind Direction</div>
+            <div class="value">{{selectedWeather.wd_to}} {{selectedWeather.wd_deg}}°</div>
+
+            <div class="label">Cloud Cover</div>
+            <div class="value">{{selectedWeather.tcc }}</div>
+
+            <div class="label">Visibility</div>
+            <div class="value">{{selectedWeather.vs_text}}</div>
+        </div>
+        <div class="sun-times">
+            <div class="time-box">
+                <div class="time">{{sunrise | date:'HH:mm'}}</div>
+                <img src="assets/cuaca/sunrise.png" alt="">
+            </div>
+
+            <div class="time-box">
+                <div class="time">{{sunset | date:'HH:mm'}}</div>
+                <img src="assets/cuaca/sunset.png" alt="">
+
+            </div>
+        </div>
+    </div>
+</div>

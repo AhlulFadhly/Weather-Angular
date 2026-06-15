@@ -1,13 +1,8 @@
 <div class="hourly-forecast">
-  <div class="forecast-header">
-    <h3>Prakiraan Per Jam</h3>
-  </div>
-
-  <div class="forecast-list">
-
+    <div class="forecast-list">
     <div *ngFor="let item of allWeather" class="forecast-item" (click)="select(item)" [class.active]="isActive(item)">
-      <span class="time">{{ item.local_datetime | date:'HH:mm' }}</span>
-      <img [src]="getWeatherIcon(item.image)" [alt]="item.weather_desc" width="80">
+      <span class="time">{{ item.local_datetime | date:'HH' }}</span>
+      <img [src]="getWeatherIcon(item.image)" [alt]="item.weather_desc">
       <span class="temp">{{ item.t }}°</span>
     </div>
   </div>

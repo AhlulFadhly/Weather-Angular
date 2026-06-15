@@ -1,6 +1,24 @@
 :host {
   display: block;
   // background-color: #d5ebff;
-  padding: 10px 8%;
+  padding: 0 15%;
 
+}
+
+@media (max-width: 992px) {
+  :host {
+    padding: 0 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 0 8%;
+  }
+}
+
+@media (max-width: 576px) {
+  :host {
+    padding: 0 6%;
+  }
 }

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export class ForecastJamComponent {
   @Input()
   allWeather: any[] = [];
-  
+
   @Input()
   selectedWeather: any;
 
@@ -26,24 +26,19 @@ export class ForecastJamComponent {
     return this.selectedWeather?.local_datetime === item?.local_datetime;
   }
 
-
   //ganti icon
-  getWeatherIcon(
-  apiImage: string
-): string {
+  getWeatherIcon(apiImage: string): string {
+    if (!apiImage) {
+      return 'assets/cuaca/default.png';
+    }
 
-  if (!apiImage) {
-    return 'assets/cuaca/default.png';
-  }
-
-  const fileName =
-    apiImage
+    const fileName = apiImage
       .split('/')
       .pop()
       ?.replace('.svg', '.png')
       .replaceAll(' ', '-')
       .toLowerCase();
 
-  return `assets/cuaca/${fileName}`;
-}
+    return `assets/cuaca/${fileName}`;
+  }
 }
