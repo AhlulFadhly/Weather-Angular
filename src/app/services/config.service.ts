@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ConfigService {
   private http = inject(HttpClient);
-  private adm4Subject = new BehaviorSubject<string>('31.71.03.1001');
+  private adm4Subject = new BehaviorSubject<string>('13.07.13.2004');
 
   adm4$ = this.adm4Subject.asObservable();
 
