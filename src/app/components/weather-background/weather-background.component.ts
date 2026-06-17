@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class WeatherBackgroundComponent implements OnInit, OnDestroy {
   @Input()
-  selectedWeather: any;
+  selectedWeather?: any;
 
   isFlashing = false;
   showBolt = false;
@@ -58,7 +58,7 @@ export class WeatherBackgroundComponent implements OnInit, OnDestroy {
       return false;
     }
 
-    return this.selectedWeather.image.toLowerCase().includes('-pm.svg');
+    return this.selectedWeather?.image.toLowerCase().includes('-pm.svg');
   }
 
   get weatherType(): string {

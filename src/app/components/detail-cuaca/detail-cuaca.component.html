@@ -2,29 +2,29 @@
     <i class="fa-solid fa-location-dot"></i>
 
     <div>
-        <h2>{{weatherData.lokasi.kotkab}}</h2>
-        <p>{{weatherData.lokasi.desa}}, {{weatherData.lokasi.provinsi}}</p>
+        <h2>{{weatherData?.lokasi.kotkab}}</h2>
+        <p>{{weatherData?.lokasi.desa}}, {{weatherData?.lokasi.provinsi}}</p>
     </div>
 </div>
 <div class="card">
     <div class="cuaca">
         <div class="date">
             <div class="hari">
-                {{selectedWeather.local_datetime | date:'EEEE' | uppercase }}
+                {{selectedWeather?.local_datetime | date:'EEEE' | uppercase }}
             </div>
-            <span>{{selectedWeather.local_datetime | date:'MMMM d' | uppercase }}</span>
+            <span>{{selectedWeather?.local_datetime | date:'MMMM d' | uppercase }}</span>
         </div>
         <div class="kondisi">
             <div class="suhu">
                 <div class="c">
-                    {{selectedWeather.t }}°C
+                    {{selectedWeather?.t }}°C
                 </div>
                 <div class="awan">
-                    {{selectedWeather.weather_desc_en | uppercase }}
+                    {{selectedWeather?.weather_desc_en | uppercase }}
                 </div>
             </div>
             <div class="gambar">
-                <img [src]="getWeatherIcon(selectedWeather.image)" [alt]="selectedWeather.weather_desc">
+                <img [src]="getWeatherIcon(selectedWeather?.image)" [alt]="selectedWeather?.weather_desc">
             </div>
         </div>
 
@@ -32,22 +32,22 @@
     <div class="detail">
         <div class="stats">
             <div class="label">Humidity</div>
-            <div class="value">{{selectedWeather.hu }}</div>
+            <div class="value">{{selectedWeather?.hu }}</div>
 
             <div class="label">Wind</div>
-            <div class="value">{{selectedWeather.ws }} km/h</div>
+            <div class="value">{{selectedWeather?.ws }} km/h</div>
 
             <div class="label">Precipitation</div>
-            <div class="value">{{selectedWeather.tp }}</div>
+            <div class="value">{{selectedWeather?.tp }}</div>
 
             <div class="label">Wind Direction</div>
-            <div class="value">{{selectedWeather.wd_to}} {{selectedWeather.wd_deg}}°</div>
+            <div class="value">{{selectedWeather?.wd_to}} {{selectedWeather?.wd_deg}}°</div>
 
             <div class="label">Cloud Cover</div>
-            <div class="value">{{selectedWeather.tcc }}</div>
+            <div class="value">{{selectedWeather?.tcc }}</div>
 
             <div class="label">Visibility</div>
-            <div class="value">{{selectedWeather.vs_text}}</div>
+            <div class="value">{{selectedWeather?.vs_text}}</div>
         </div>
         <div class="sun-times">
             <div class="time-box">
